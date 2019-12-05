@@ -1,0 +1,15 @@
+
+
+#On modifier la valeur de la variable locale de config/packages/translation.yaml dans config/translation/service.yaml en fr
+
+Title : Titre
+Price : Prix
+Rooms : Pièces
+Bedrooms : Chambres
+Heat : Type de chauffage
+Floor : Étage
+Adress : Adresse
+City: Ville
+Postal code : Code Postal
+Sold : Vendu
+Created at : Créé le
