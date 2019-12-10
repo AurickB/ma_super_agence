@@ -1,6 +1,6 @@
 
 
-#On modifier la valeur de la variable locale de config/packages/translation.yaml dans config/translation/service.yaml en fr
+#On modifier la valeur de la variable locale de config/packages/translation.yaml dans config/packages/service.yaml en fr
 
 Title : Titre
 Price : Prix

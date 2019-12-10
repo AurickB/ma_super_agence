@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Créer un utilisateur' %}
+
+{% block body %}
+
+    <div class="container mt-4">
+        <h1>Créer un utilisateur</h1>
+        {{ form_start(form) }}
+        <div class="row">
+            <div class="col-md-4">{{ form_row(form.username) }}</div>
+            <div class="col-md-4">{{ form_row(form.role) }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">{{ form_row(form.password) }}</div>
+        </div>
+        <button class="btn btn-primary">Créer</button>
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}

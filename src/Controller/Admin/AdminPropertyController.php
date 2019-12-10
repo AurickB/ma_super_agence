@@ -36,7 +36,8 @@ class AdminPropertyController extends AbstractController
     {
         $properties = $this->repository->findAll();
         return $this->render('admin/property/index.html.twig', [
-            'properties' => $properties
+            'properties' => $properties,
+            'current_menu' => 'management',
         ]);
     }
 
@@ -106,12 +107,12 @@ class AdminPropertyController extends AbstractController
     // Méthode qui permet supprimer des biens
     public function delete(Properties $property, Request $request)
     {
-        // On valide le token csrf
+        // On vérifie si le token csrf est valide grâce à la méthode qui prend l'id du token et le token grâce à la méthode get
         if ($this->isCsrfTokenValid('delete' . $property->getId(), $request->get('_token'))){
             //$this->em->remove($property);
             //$this->em->flush();;
             $this->addFlash('success', 'Votre bien a été supprimé avec succès');
-            return new Response('Suppression');
+            return $this->redirectToRoute('admin.property.index');
         }
         return $this->redirectToRoute('admin.property.index');
     }

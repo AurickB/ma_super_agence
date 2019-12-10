@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title 'Gérer les biens' %}
+{% block title 'Gérer les utilisateurs' %}
 
 {% block body %}
 
     <div class="container mt-4">
         <h2 class="text-center mb-4">Bienvenue {{ app.user.username }}</h2>
-        <h1>Gérer les biens</h1>
+        <h1>Gérer les utilisateurs</h1>
 
         {% for message in app.flashes('success') %}
             <div class="alert alert-success">
@@ -21,14 +21,12 @@
             </tr>
             </thead>
             <tbody>
-            {% for property in properties %}
+            {% for user in users %}
                 <tr>
-                    <td>{{ property.title }}</td>
+                    <td>{{ user.username }}</td>
                     <td>
-                        <a href="{{ path('admin.property.edit', {id: property.id}) }}" class="btn btn-secondary">Editer</a>
-                        <form method="post" action="{{ path('admin.property.delete', {id: property.id}) }}" style="display: inline-block" onsubmit="return confirm('Ëtes vous sûr ?')">
-                            {#On se protège contre les attaques csrf en générant un csrf token qu'on nomme 'delete' et lui concatène l'id du bien#}
-                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ property.id) }}">
+                        <form method="post" action="{{ path('superadmin.user.delete', {id: user.id}) }}" style="display: inline-block" onsubmit="return confirm('Ëtes vous sûr ?')">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
                             <input type="hidden" name="_method" value="DELETE">
                             <button class="btn btn-danger">Supprimer</button>
                         </form>
@@ -39,7 +37,7 @@
         </table>
 
         <div class="text-right">
-            <a href="{{ path('admin.property.new') }}" class="btn btn-primary">Créer un bien</a>
+            <a href="{{ path('superadmin.user.new') }}" class="btn btn-primary">Créer un utilisateur</a>
         </div>
     </div>
 
